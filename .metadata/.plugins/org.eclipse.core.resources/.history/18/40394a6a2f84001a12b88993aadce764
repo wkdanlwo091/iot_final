@@ -1,0 +1,29 @@
+package top.vo;
+
+
+public class OrderVO {
+	String orderID;
+	int payment;
+	String deliveryDate;
+	String deliveryState;
+	String orderPerson;
+	String orderState;
+	String hqID;
+	String chainID;
+	String userID;
+
+	public OrderVO(String orderID, int payment, String deliveryDate, String deliveryState, String orderPerson,
+			String orderState, String hqID, String chainID, String userID) {
+		super();
+		this.orderID = orderID;
+		this.payment = payment;
+		this.deliveryDate = deliveryDate;
+		this.deliveryState = deliveryState;
+		this.orderPerson = orderPerson;
+		this.orderState = orderState;
+		this.hqID = hqID;
+		this.chainID = chainID;
+		this.userID = userID;
+	}
+
+}

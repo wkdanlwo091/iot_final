@@ -1,0 +1,62 @@
+package top.controller;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import top.frame.Biz;
+import top.vo.IngredientVO;
+
+@Controller
+public class IngredientController {
+
+	@Resource(name = "ingbiz")
+	Biz<String, IngredientVO> biz;
+	// Show ingredient list
+	@RequestMapping("/ingredientList.top")
+	public ModelAndView showIngredientList(ModelAndView mv, HttpServletResponse res) {
+
+		for (IngredientVO i : biz.get()) {
+			System.out.println(i);
+		}
+		<li class="nav-item">
+		<a data-toggle="collapse" href="#maps">
+			<i class="fas fa-map-marker-alt"></i>
+			<p>Maps</p>
+			<span class="caret"></span>
+		</a>
+		<div class="collapse" id="maps">
+			<ul class="nav nav-collapse">
+				<li>
+					<a href="maps/googlemaps.html">
+						<span class="sub-item">Google Maps</span>
+					</a>
+				</li>
+				<li>
+					<a href="maps/fullscreenmaps.html">
+						<span class="sub-item">Full Screen Maps</span>
+					</a>
+				</li>
+				<li>
+					<a href="maps/jqvmap.html">
+						<span class="sub-item">JQVMap</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</li>
+		
+		mv.addObject("loginId", "dd");
+		mv.addObject("ingredientListData", biz.get());
+		mv.addObject("ingredientListTable", "../ingredient/ingredientList");
+		mv.setViewName("main/main");
+		res.setContentType("text/html; charset=UTF-8");
+		return mv;
+	}
+	// Add ingredient
+	// Modify ingredient
+	// delete ingredient
+}

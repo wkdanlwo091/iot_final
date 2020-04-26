@@ -1,0 +1,13 @@
+package top.frame;
+
+import java.util.ArrayList;
+import org.springframework.transaction.annotation.Transactional;
+
+public interface Dao<Id, Model> {
+
+	
+	public void insert(Model m) throws Exception;//slow down
+	public Model select(Id id);
+	
+	public ArrayList<Model> selectall();
+}

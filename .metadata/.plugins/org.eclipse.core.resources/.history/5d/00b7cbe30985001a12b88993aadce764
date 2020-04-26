@@ -1,0 +1,5 @@
+package top.mapper;
+
+public class OrderDetailMapper {
+
+}

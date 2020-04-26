@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mapper.OrderMapper">
+	<resultMap id = "ingredient"  type = "ingredient">
+		<result column= "" />
+			String ingID;
+			String ingCategory;
+			String ingName;
+			double ingPrice;
+			String ingUnit;
+			String ingBrand;
+			String ingType;
+			double ingWeight;
+			String ingRegDate;
+			String ingLink;
+			int ingLinkCount;
+			String ingImgName;
+		
+	</resultMap>
+	<resultMap id = "order"  type = "order">
+	</resultMap>
+	<resultMap id = "orderdetail"  type = "orderdetail">
+	</resultMap>
+	<resultMap id = "chain"  type = "chain">
+	</resultMap>
+	<resultMap id = "headquarter"  type = "headquarter">
+	</resultMap>
+	<resultMap type="Car" id="Car">
+	<result column="owner_id" property="ownerId"/>
+	<result column="model_no" property="modelNo"/>
+	<result column="color" property="color"/>
+	</resultMap>
+
+	<insert id= "insert" parameterType = "order">
+		INSERT INTO ORDERS VALUES(#{orderID}, #{payment}, #{deliveryDate}, #{deliveryState}, #{orderPerson}, #{orderState}, #{hqID}, #{chainID}, #{userID})
+	</insert>
+	<select id="select" parameterType="String" resultType="order">
+		SELECT * FROM ORDERS WHERE userID=#{userID}
+	</select>
+	<select id="selectall" resultType="order">
+		SELECT * FROM ORDERS
+	</select>
+	<select id = "" parameterType = "">
+		
+	</select>
+	
+</mapper>

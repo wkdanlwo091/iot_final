@@ -1,0 +1,13 @@
+package top.frame;
+
+import java.util.ArrayList;
+
+public interface Biz<Id, Model> {
+	//예전 프로젝트의 서비스 라고 하면 된다. 
+	
+	public void register(Model m) throws Exception;
+	public Model get(Id id);
+	
+	public ArrayList<Model> get();
+
+}

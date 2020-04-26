@@ -1,0 +1,5 @@
+package top.vo;
+
+public class OrderDetailJoinVO {
+
+}

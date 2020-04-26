@@ -1,0 +1,22 @@
+####### Global logging configuration
+log4j.rootLogger=INFO, stdout
+ 
+####### stdout Appender
+log4j.appender.data.Threadhold=DEBUG
+
+log4j.appender.stdout=org.apache.log4j.DailyRollingFileAppender 
+log4j.appender.stdout.DatePattern = '.'yyyy-MM-dd
+log4j.appender.stdout.layout=org.apache.log4j.PatternLayout
+log4j.appender.stdout.layout.ConversionPattern=[%5p] %d{hh\:mm s} (%F\:%L) %c{1}.%M \: %m%n
+log4j.appender.data.File = c:/logs1/stdout.log 
+
+
+
+
+# data
+log4j.appender.data.Threadhold=DEBUG
+log4j.appender.data = org.apache.log4j.DailyRollingFileAppender 
+log4j.appender.data.DatePattern = '.'yyyy-MM-dd
+log4j.appender.data.layout = org.apache.log4j.PatternLayout 
+log4j.appender.data.layout.ConversionPattern = %5p  [%d{MMdd HHmmss}] %F:%L:%M - %m%n
+log4j.appender.data.File = c:/logs/data.log 

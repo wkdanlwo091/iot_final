@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mapper.OrderMapper">
+	<insert id= "insert" parameterType = "order">
+		INSERT INTO ORDERS VALUES(#{orderID}, #{payment}, #{deliveryDate}, #{deliveryState}, #{orderPerson}, #{orderState}, #{hqID}, #{chainID}, #{userID})
+	</insert>
+	<select id="select" parameterType="String" resultType="order">
+		SELECT * FROM ORDERS WHERE userID=#{userID}
+	</select>
+	<select id="selectall" resultType="order">
+		SELECT * FROM ORDERS
+	</select>
+	
+	
+	<!--  
+		select a.hqID, e.chainname, b.orderID, c.totweight, c.ingquantity, d.ingName, d.ingPrice
+		from headquarter a, orders b, orderdetail c, ingredient d, chain e 
+		where a.hqID ='cafe_TOP_hq';
+	-->
+	
+	<!-- 
+		select e.chainname, b.orderID, c.totweight, c.ingquantity, d.ingName, d.ingPrice
+		from orders b, orderdetail c, ingredient d, chain e 
+		where e.chainname ='카페 TOP(역삼 1호점)';
+	 -->
+	
+</mapper>

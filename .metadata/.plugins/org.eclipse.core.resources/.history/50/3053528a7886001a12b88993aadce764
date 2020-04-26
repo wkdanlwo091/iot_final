@@ -1,0 +1,30 @@
+package top.vo;
+
+public class ContainerVO {
+	String conID;
+	String conSize;
+	double conMaxWeight;
+	String conRegDate;
+	String conUpdateDate;
+	double conFullWeight;
+	int conFullQuantity;
+	double conWarningWeight;
+	int conWarningQuantity;
+	double conCurrWeight;
+	int conCurrQuantity;
+	double conUnitWeight;
+	String ingID;
+	String ingName;
+	String ingWeight;
+	String ingUnit;
+	String chainID;
+	String chainName;
+	String hqID;
+	String hqName;
+
+	public ContainerVO() {
+
+	}
+
+
+}

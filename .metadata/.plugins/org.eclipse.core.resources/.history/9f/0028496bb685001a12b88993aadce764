@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="top.mapper.OrderDetailMapper">
+	<insert id="insert" parameterType="orderdetail">
+		INSERT INTO ORDERDETAIL
+		VALUES(#{orderDetailID}, #{ingWeight}, #{ingQuantity},
+		#{ingID}, #{ingName}, #{ingPrice}, #{ingUnit}, #{orderID}, #{hqID},#{hqName},
+		#{chainID},#{chainName},#{userID},#{userName})
+	</insert>
+	<select id="select" parameterType="String"
+		resultType="orderdetail">
+		SELECT * FROM ORDERDETAIL WHERE
+		orderDetailID=#{orderDetailID}
+	</select>
+	<select id="selectall" resultType="orderdetail">
+		SELECT * FROM ORDERDETAIL
+	</select>
+	
+	<resultMap type="orderdetail" id="orderdetail">
+		<result column="hqname" property="hqname"/>
+		<result column="chainname" property="chainname"/>
+		<result column="price" property="price"/>
+		<result column="ingname" property="ingname"/>
+		<result column="ingunit" property="ingunit"/>
+		<result column="ingquantity" property="ingquantity"/>
+		<result column="orderid" property="orderid"/>
+	</resultMap>
+	
+	<resultMap type="order" id="order">
+		<result column="orderid" property="orderid"/>
+		<result column="orderstate" property="orderstate"/>
+		<collection property="orderdetail" resultMap="orderdetail"/>
+	</resultMap>
+	
+	<select id="selectOrderWithOrderDetail" parameterType="String" resultMap="order">
+		SELECT p.hqname, p.chainname, p.ingprice
+			   p.ingname, p.ingunit, c.quantity
+	      FROM order p, orderdetail c
+	      where p.orderid = c.orderid and c.orderid = #{orderid}
+	</select>
+
+<!-- 		  
+		JOIN orderdetail c
+		    ON p.orderid = c.orderid
+		 WHERE p.orderid = #{orderid}
+ -->
+
+</mapper>

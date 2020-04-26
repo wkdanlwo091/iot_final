@@ -1,0 +1,13 @@
+package top.mapper;
+
+import java.util.ArrayList;
+
+import top.vo.OrderDetailVO;
+import top.vo.OrderVO;
+
+public interface OrderDetailMapper {
+	public void insert(OrderVO orderID);
+
+	public OrderDetailVO select(String menuID);
+	public ArrayList<OrderDetailVO> selectall();
+}
