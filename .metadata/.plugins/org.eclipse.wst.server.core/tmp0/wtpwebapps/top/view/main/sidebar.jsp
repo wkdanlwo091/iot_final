@@ -66,7 +66,6 @@
 						<i class="fas fa-table"></i>
 						<p>Chain Access</p>
 				</a></li>
-
 				<li class="nav-item"><a data-toggle="collapse" onclick = "popup()">
 						<i class="far fa-chart-bar"></i>
 						<p>Order</p>

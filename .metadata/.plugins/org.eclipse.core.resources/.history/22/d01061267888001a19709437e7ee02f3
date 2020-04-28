@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <appender name="fileLogger" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="file" value="c:/logs/spring/spring.Log"/>
+        <param name="Append" value="true"/>
+        <param name="dataPattern" value=".yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%m%n" />
+        </layout>
+    </appender>
+   
+   <!-- Application Loggers -->
+   <logger name="com.sds.finalpj">
+      <level value="info" />
+      <appender-ref ref="fileLogger" />
+   </logger>

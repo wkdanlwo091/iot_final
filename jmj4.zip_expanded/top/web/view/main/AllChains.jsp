@@ -139,7 +139,8 @@
 		//getData();
 	});
 </script>
-<h1 class="page-title">Main Page</h1>
+<h1 class="page-title">Main Page</h1> <p id = "redirectToContainer"> </p><!-- 여기 페이지에  값을 -->
+
 <div class="card">
 	<div class="card-body">
 		<div class="row">

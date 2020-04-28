@@ -40,10 +40,15 @@ public class OrderController {
 
 	@Resource(name = "orderbiz")
 	Biz<String, OrderVO> biz2;
-	
 	@Resource(name = "orderdetailbiz")
 	Biz<String, OrderDetailVO> biz3;
-		
+
+    
+	@RequestMapping("/sendToContainer.top")
+	public String sendToContainer(HttpServletRequest req) throws Exception{
+		System.out.println("hahah");
+	    return "containerregisterwizard.top";
+	}
 	@RequestMapping("/sendDataToDB.top")
 	public void sendDataToDB(HttpServletRequest req) throws Exception{
 		System.out.println("sendDataToDB start");
@@ -52,16 +57,9 @@ public class OrderController {
 		int dataLength = Integer.parseInt(loadProds);
 		ArrayList<String> orderDetailID = new ArrayList<>();
 		ArrayList<OrderDetailVO> OrderDetailVO = new ArrayList<>();
-
-		
-
         logger.info("This is an info log entry");
-        logger.error("This is an error log entry");
-
         JSONParser parser = new JSONParser();
 		JSONObject jsonObject = null;
-		
-		
 		
 		try {
 			jsonObject = (JSONObject) parser.parse(json);
@@ -69,12 +67,17 @@ public class OrderController {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+		
+		OrderDetailVO OrderDetailList = null;
+		
 		for(int i = 0 ;i < dataLength; i++) {
 			OrderDetailVO mine = new OrderDetailVO();
 			mine.setOrderDetailID((String) jsonObject.get(Integer.toString(i)));
 			System.out.println("update data");
 			//orderDetailID.add((String) jsonObject.get(Integer.toString(i)));
 			biz3.update(mine);
+			OrderDetailList = biz3.get((String) jsonObject.get(Integer.toString(i)));
+	        logger.info("OrderDetail Log " + OrderDetailList.getOrderDetailID() + " " + OrderDetailList.getHqName() + " " + OrderDetailList.getChainName() + " " + OrderDetailList.getIngPrice() + " " + OrderDetailList.getIngTotPrice());
 		}
 	}
 	/*

@@ -60,7 +60,7 @@
 		totalPrice += SelectedItemMoney[itemIndex];
 		document.querySelector("body > div > div > div > div > div > div.row > div > div.col-12.panel-footer.basket-footer > div > div > div").innerHTML = "총합: " +  totalPrice.toString();;
 	 }
-		//물건 수량을 빼는 함수 
+	//물건 수량을 빼는 함수 
 	function minusItem(mi, itemIndex) {
 			if (SelectedItemArray[mi - 1] <= 1) {
 				alert("최소 수량은 한개입니다.");return;
@@ -180,7 +180,6 @@
 							myTemp += "<td>" + data[i].OrderState+ "</td>";
 							myTemp += "</tr>";
 							totalPrice += data[i].IngPrice * data[i].IngQuantity;
-							
 							document.querySelector('body > div > div > div > div > div > div.row > div > div.col-12.panel-footer.basket-footer > div > div > div').innerHTML = "총합 : "+ totalPrice.toString();  
 						}
 						$('#myTable').append(myTemp);
@@ -220,7 +219,6 @@
 						temp += '</div>';
 						$('#template > div.col-12.panel-body.basket-body').append(temp);
 					}, 2000);
-
 		}else if(itemList.length != 0){
 			totalAddedItem++;
 			// 2초 후 작동해야할 코드   ---> 이것을 안하면 AJAX가 값을 받아오기 전에 itemList가 값을 뿌린다. 
@@ -236,14 +234,10 @@
 			temp += '</select>';
 			temp += '</div>';
 			$('#template > div.col-12.panel-body.basket-body').append(temp);
-
 		}
 	};
 	$(document).ready(function() {
-		
 		getData();
-		
-		
 		var loginId = "${loginId}";
 		///기업용인지 사용자용인지에 따라서 뽑는 데이터 달라진다. 
 		var chainOrHq = 0;
@@ -289,6 +283,20 @@
 			return this.get(0).scrollHeight > this.height();
 		}
 	})(jQuery);
+	$(document).ready(function() { 
+	});
+	
+	function addItemToContainer(){
+		alert("parent의 value는 " + opener.popupCheck);
+		opener.targetProxy.hello_world = "test";
+		
+		//window.opener.document.getElementById('redirectToContainer').value = "sendToContainer.top"; // parent frame에 child popup의 프레임의 값을 전달'
+		//redirectToContainer은 AllChains에 있다. 
+		//window.open('', '_self', ''); window.close();
+	}
+</script>
+
+	
 </script>
 <style>
 #rowC { //가로 스크롤 
@@ -650,9 +658,8 @@ span.month.focused.active {
 									<hr>
 									<div class="row">
 										<div class="col-8 align-right description">
-											<button type="button" onclick="addItem()"
-												style="color: red; float: left; font-size: 10px; width: 10px; height: 10px;">
-												Add Item</button>
+										
+											<input type="button" onclick="addItemToContainer()" value="Add" style="color: red; float: left; "/>
 											<div class="dive">총합 :</div>
 										</div>
 									</div>

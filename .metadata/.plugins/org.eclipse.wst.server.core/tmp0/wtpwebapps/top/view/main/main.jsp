@@ -15,6 +15,7 @@
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
 <script>
+
 	WebFont.load({
 		google : {
 			"families" : [ "Open+Sans:300,400,600,700" ]
@@ -49,6 +50,21 @@
 </script>
 
 <script>
+
+
+	var popupCheck = 5;
+	
+	var targetObj = {};
+	var targetProxy = new Proxy(targetObj, {
+	  set: function (target, key, value) {
+	      //console.log(`${key} set to ${value}`);
+	      location.href = "/sendToContainer.top";
+	      target[key] = value;
+	      return true;
+	  }
+	});
+	
+	//targetProxy.hello_world = "test";
 	function getData(value) {
 		$.ajax({
 			url : '/orderData.top',
@@ -61,18 +77,20 @@
 			}
 		});
 	};
-	
+	// 자식으로부터 메시지 수신
+	function receiveMsgFromChild( e ) {
+	    console.log( '자식으로부터 받은 메시지 ' +  e.data + " printed" );
+	}
 	function popup() {
 		var url = "popupOrder.top";//../top/view/main/popupOrder.jsp 
 		//popupOrder.top 하면 매핑이 된다. 
 		var name = "popup test";
-		var option = "width = 700, height =1200, top = 100, left = 200, location = no"
+		var option = "width = 700, height =1200, top = 100, left = 200, location = no";
 		window.open(url, name, option);
 	}
 	
+
 </script>
-
-
 <!-- CSS Files -->
 <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/css/azzara.min.css">
